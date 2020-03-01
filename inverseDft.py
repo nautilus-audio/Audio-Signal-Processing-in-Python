@@ -9,10 +9,7 @@ def iDFT(X):
 	y (numpy array) = time-domain signal
 	"""
 	N = len(X)
-	y = np.array([])
-	for n in range(N):
-		s = np.exp(1j * 2 * np.pi * n /N * np.arange(N))
-		y = np.append(y, 1.0/N * sum(X*s))
+	y = np.array([1.0/N * sum(X*genComplexSine(k, N)) for k in range(N)])
 	return y
 
 
