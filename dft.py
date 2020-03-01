@@ -7,12 +7,14 @@ def DFT(x):
 	x (numpy array) = input sequence of length N
 	Output:
 	X (numpy array) = The N point DFT of the input sequence x
+	mX = magnitude spectrum
+	pX = phase spectrum
 	"""
 	N = len(x)
 	X = np.array([(np.sum(x*genComplexSine(k, N))) for k in range(N)])
 	mX = 20 * np.log10(abs(X))
 	pX = np.angle(X)
-	return mX, pX
+	return X, mX, pX
 
 
 def genComplexSine(k, N):
