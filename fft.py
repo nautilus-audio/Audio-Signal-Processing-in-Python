@@ -1,7 +1,6 @@
 import numpy as np
 import math
 from scipy.signal import get_window
-import time
 
 
 def FFT(x, fs, a_time):
@@ -16,14 +15,11 @@ def FFT(x, fs, a_time):
 	mX (numpy array) = magnitude spectrum
 	pX (numpy array) = phase spectrum
 	"""
-	start_time = time.time()
 	fftbuffer = zeroPadZeroPhase(x, fs, a_time)
 	N = len(fftbuffer)
 	X = np.array([(np.sum(fftbuffer*genComplexSine(k, N))) for k in range(N)])
 	mX = 20 * np.log10(abs(X))
 	pX = np.angle(X)
-	end_time = time.time() - start_time 
-	print end_time
 	return X, mX, pX
 
 
