@@ -3,7 +3,7 @@ import math
 from scipy.signal import get_window
 
 
-def FFT(x, fs, a_time):
+def DFT(x, fs, a_time):
 	"""
 	Input:
 	x (numpy array) = input sequence of length N
@@ -15,9 +15,9 @@ def FFT(x, fs, a_time):
 	mX (numpy array) = magnitude spectrum
 	pX (numpy array) = phase spectrum
 	"""
-	fftbuffer = zeroPadZeroPhase(x, fs, a_time)
-	N = len(fftbuffer)
-	X = np.array([(np.sum(fftbuffer*genComplexSine(k, N))) for k in range(N)])
+	dftbuffer = zeroPadZeroPhase(x, fs, a_time)
+	N = len(dftbuffer)
+	X = np.array([(np.sum(dftbuffer*genComplexSine(k, N))) for k in range(N)])
 	mX = 20 * np.log10(abs(X))
 	pX = np.angle(X)
 	return X, mX, pX
@@ -45,7 +45,7 @@ def zeroPadZeroPhase(x, fs, a_time):
 	a_time (float) = time index in seconds
 	Output:
 	The function should return
-	fftbuffer (numpy array) = windowed signal of N size
+	dftbuffer (numpy array) = windowed signal of N size
 	"""
 	O = 511
 	w = get_window("blackman", O)
@@ -55,11 +55,11 @@ def zeroPadZeroPhase(x, fs, a_time):
 	N = 8 * O
 	sample = int(a_time*fs) # get sample
 	x1 = x[sample:sample+O] 
-	fft_size = 1024
+	dft_size = 1024
 	hM1 = (w.size+1)//2
 	hM2 = int(math.floor(w.size/2))
-	fftbuffer = np.zeros(N)
+	dftbuffer = np.zeros(N)
 	xw = x1*w 
-	fftbuffer[:hM1] = xw[hM2:]
-	fftbuffer[-hM2:] = xw[:hM2] 
-	return fftbuffer
+	dftbuffer[:hM1] = xw[hM2:]
+	dftbuffer[-hM2:] = xw[:hM2] 
+	return dftbuffer
