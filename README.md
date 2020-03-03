@@ -7,4 +7,4 @@ Discrete Fourier Transform
 
 Inverse DFT
 
-Fast Fourier Transform
+DFT with Zero Padding and Zero Phasw Windowing 
