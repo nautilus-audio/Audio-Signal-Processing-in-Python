@@ -38,28 +38,28 @@ def genComplexSine(k, N):
 
 
 def zeroPadZeroPhase(x, fs, a_time):
-    """
-    Inputs:
-        x (numpy array) = input signal of length M
-        fs (float) = sampling frequency in Hz
-        a_time (float) = time index in seconds
-    Output:
-        The function should return
-        fftbuffer (numpy array) = windowed signal of N size
-    """
-    O = 511
-    w = get_window("blackman", O)
+	"""
+	Inputs:
+	x (numpy array) = input signal of length M
+	fs (float) = sampling frequency in Hz
+	a_time (float) = time index in seconds
+	Output:
+	The function should return
+	fftbuffer (numpy array) = windowed signal of N size
+	"""
+	O = 511
+	w = get_window("blackman", O)
 
-    # Allocate and populate buffer
-    M = len(x)
-    N = 8 * O
-    sample = int(a_time*fs) # get sample
-    x1 = x[sample:sample+O] 
-    fft_size = 1024
-    hM1 = (w.size+1)//2
-    hM2 = int(math.floor(w.size/2))
-    fftbuffer = np.zeros(N)
-    xw = x1*w 
-    fftbuffer[:hM1] = xw[hM2:]
-    fftbuffer[-hM2:] = xw[:hM2] 
-    return fftbuffer
+	# Allocate and populate buffer
+	M = len(x)
+	N = 8 * O
+	sample = int(a_time*fs) # get sample
+	x1 = x[sample:sample+O] 
+	fft_size = 1024
+	hM1 = (w.size+1)//2
+	hM2 = int(math.floor(w.size/2))
+	fftbuffer = np.zeros(N)
+	xw = x1*w 
+	fftbuffer[:hM1] = xw[hM2:]
+	fftbuffer[-hM2:] = xw[:hM2] 
+	return fftbuffer
