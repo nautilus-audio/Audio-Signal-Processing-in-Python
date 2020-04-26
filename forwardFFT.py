@@ -15,7 +15,7 @@ def FFT(x):
 	N = len(x)/2
 
 	if N % 2 > 0:
-		error_msg = "DFT size must be a power of 2."
+		error_msg = "FFT size must be a power of 2."
 		raise ValueError(error_msg)
 
 	even_x = x[::2]
