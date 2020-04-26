@@ -3,8 +3,10 @@ Concepts learned from Audio Signal Processing for Music Applications via Courser
 
 
 ## Included are implentations of the following algorithms in Python:
-Discrete Fourier Transform
+Forward Discrete Fourier Transform
 
-Inverse DFT
+Inverse Discrete Fourier Transform
 
-DFT with Zero Padding and Zero Phasw Windowing 
+Forward Discrete Fourier Transform (Cooley-Tukey Algorithm)
+
+DFT with Zero Padding and Zero Phase Windowing 
