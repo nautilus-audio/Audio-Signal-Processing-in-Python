@@ -18,11 +18,11 @@ def FFT(x):
 
 	even_X = np.array([(np.sum(even_x*genComplexSine(k, N))) for k in range(N)])
 	odd_X = np.array([(np.sum(odd_x*genComplexSine(k, N))) for k in range(N)])
-	factor = np.exp(-2j * np.pi * np.arange(len_x) / len_x)
+	complex_exp = np.exp(-2j * np.pi * np.arange(len_x) / len_x)
 
 	X = np.array([])
-	X = np.concatenate([even_X + factor[:N] * odd_X,
-                               even_X + factor[N:] * odd_X])
+	X = np.concatenate([even_X + complex_exp[:N] * odd_X,
+                               even_X + complex_exp[N:] * odd_X])
 
 	mX = 20 * np.log10(abs(X))
 	pX = np.angle(X)
