@@ -13,6 +13,11 @@ def FFT(x):
 	"""
 	len_x = len(x)
 	N = len(x)/2
+
+	if N % 2 > 0:
+		error_msg = "DFT size must be a power of 2."
+		raise ValueError(error_msg)
+
 	even_x = x[::2]
 	odd_x = x[1::2]
 
@@ -41,9 +46,4 @@ def genComplexSine(k, N):
 	n = np.arange(N)
 	cSine = np.exp(-2j * np.pi * k * n / N)
 	return cSine
-
-
-
-
-
 
