@@ -7,6 +7,6 @@ Forward Discrete Fourier Transform
 
 Inverse Discrete Fourier Transform
 
-Forward Discrete Fourier Transform (Cooley-Tukey Algorithm)
+Forward Fast Fourier Transform (Cooley-Tukey Algorithm)
 
 DFT with Zero Padding and Zero Phase Windowing 
