@@ -29,7 +29,7 @@ def FFT(x):
 	X = np.concatenate([even_X + complex_exp[:N] * odd_X,
                                even_X + complex_exp[N:] * odd_X])
 
-	mX = 20 * np.log10(abs(X))
+	mX = np.abs(X)
 	pX = np.angle(X)
 	return X, mX, pX
 
