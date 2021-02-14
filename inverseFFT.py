@@ -10,12 +10,6 @@ def iFFT(X):
 	The function should return a numpy array of length N
 	X (numpy array) = The N point DFT of the input sequence x
 	"""
-	len_X = len(X)
-	N = len(X)/2
-
-	if N % 2 > 0:
-		error_msg = "FFT size must be a power of 2."
-		raise ValueError(error_msg)
 
 	x = np.array([])
 
