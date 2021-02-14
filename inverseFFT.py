@@ -1,41 +1,37 @@
 import numpy as np
+from forwardFFT import FFT
 
 
-def FFT(x):
+def iFFT(X):
 	"""
 	Input:
 	x (numpy array) = input sequence of length N
 	Output:
 	The function should return a numpy array of length N
 	X (numpy array) = The N point DFT of the input sequence x
-	mX = magnitude spectrum
-	pX = phase spectrum
 	"""
-	len_x = len(x)
-	N = len(x)/2
+	len_X = len(X)
+	N = len(X)/2
 
 	if N % 2 > 0:
 		error_msg = "FFT size must be a power of 2."
 		raise ValueError(error_msg)
 
-	even_x = x[::2]
-	odd_x = x[1::2]
+	x = np.array([])
 
-	even_X = np.array([(np.sum(even_x*genComplexSine(k, N))) for k in range(N)])
-	odd_X = np.array([(np.sum(odd_x*genComplexSine(k, N))) for k in range(N)])
-	complex_exp = np.exp(-2j * np.pi * np.arange(len_x) / len_x)
+	# conjugate complex nums
+	X = np.conj(X)
 
-	print "forward"
-	print even_X
-	print odd_X
+	# forward FFT
+	x = FFT(X)
 
-	X = np.array([])
-	X = np.concatenate([even_X + complex_exp[:N] * odd_X,
-                               even_X + complex_exp[N:] * odd_X])
+	# conjugate again
+	x = np.conj(x)
 
-	# mX = np.abs(X)
-	# pX = np.angle(X)
-	return X
+	# Scale
+	x /= x.size
+
+	return x
 
 
 def genComplexSine(k, N):
@@ -48,6 +44,6 @@ def genComplexSine(k, N):
 	cSine (numpy array) = The generated complex sinusoid (length N)
 	"""
 	n = np.arange(N)
-	cSine = np.exp(-1j * 2 * np.pi * k * n / N)
+	cSine = np.exp(1j * 2 * np.pi * k * n / N)
 	return cSine
 
