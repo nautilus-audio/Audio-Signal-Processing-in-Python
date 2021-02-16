@@ -1,5 +1,5 @@
 # Audio-Signal-Processing-in-Python
-Concepts learned from Audio Signal Processing for Music Applications via Coursera
+Continuing on concepts learned from Audio Signal Processing for Music Applications via Coursera
 
 
 ## Included are implentations of the following algorithms in Python:
