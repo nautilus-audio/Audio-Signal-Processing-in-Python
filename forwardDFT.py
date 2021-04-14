@@ -12,9 +12,9 @@ def DFT(x):
 	"""
 	N = len(x)
 	X = np.array([(np.sum(x*genComplexSine(k, N))) for k in range(N)])
-	mX = np.abs(X)
-	pX = np.angle(X)
-	return X, mX, pX
+	# mX = np.abs(X)
+	# pX = np.angle(X)
+	return X
 
 
 def genComplexSine(k, N):
